@@ -1,0 +1,33 @@
+.btn-custom{
+    padding: 10px;
+    border: 0px;
+    height: 44px !important;
+}
+.btn-right{
+  margin-right: 8px;
+}
+.large-name{
+  font-weight: bold;
+  font-size: 40px;
+  font-family: "Comic Sans MS", "Comic Sans", cursive;
+  color:rgb(0, 123, 255) !important;
+}
+.input-custom{
+ width: 600px !important;
+ height: 40px;
+ border: 0px;
+ padding: 0px;
+}
+.swiper-container {
+    width: 100%;
+    height: 300px;
+}
+.menu-custom{
+  background-color: rgb(0, 123, 255);
+}
+li{
+  list-style-type: none;
+}
+.form-custom{
+  margin: 0px;
+}
