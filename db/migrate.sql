@@ -45,9 +45,9 @@ create table orders(
 
 create table orders_details(
   id INT(6) AUTO_INCREMENT PRIMARY KEY,
-  order_id(6),
+  order_id int(6),
   product_id int(6),
-  amount int(6),
+  amount int(6)
 );
 
 
