@@ -11,7 +11,7 @@
       </div>
       <div class="row justify-content-center align-items-center" style="height: 350px;">
         <div class="col col-sm-6 col-md-6 col-lg-4 col-xl-3">
-          <form class="new_user" id="new_user" action="/en/users/sign_in" accept-charset="UTF-8" method="post">
+          <form class="new_user" id="new_user" accept-charset="UTF-8" method="post">
             <div class="form-group">
               <label for="user_email">Email</label><br>
               <input autofocus="autofocus" autocomplete="email" class="form-control" placeholder="Enter your email" type="email" value="" name="user[email]" id="user_email">
@@ -31,6 +31,21 @@
               <input type="submit" name="commit" value="Log in" class="btn btn-primary" data-disable-with="Log in">
             </div>
           </form>
+
+          <?php
+            $servername = "127.0.0.1";
+            $username = "phamdat";
+            $password = "";
+
+            // Create connection
+            $conn = new mysqli($servername, $username, $password);
+
+            // Check connection
+            if ($conn->connect_error) {
+              die("Connection failed: " . $conn->connect_error);
+            }
+            echo "Connected successfully";
+          ?>
         </div>
       </div>
     </div>
