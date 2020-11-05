@@ -5,7 +5,7 @@ create table users(
   id INT(6) AUTO_INCREMENT PRIMARY KEY,
   username VARCHAR(30) NOT NULL,
   password VARCHAR(30) NOT NULL,
-  role VARCHAR(30),
+  role VARCHAR(30) default 'customer',
   cookie_token VARCHAR(30)
 );
 
@@ -51,12 +51,12 @@ create table orders_details(
 );
 
 
-ALTER TABLE products ADD FOREIGN KEY (user_id) REFERENCES users(id);
-ALTER TABLE slides ADD FOREIGN KEY (user_id) REFERENCES users(id);
-ALTER TABLE products ADD FOREIGN KEY (category_id) REFERENCES categories(id);
+
 ALTER TABLE orders ADD FOREIGN KEY (user_id) REFERENCES users(id);
 ALTER TABLE orders_details ADD FOREIGN KEY (order_id) REFERENCES orders(id);
 ALTER TABLE orders_details ADD FOREIGN KEY (product_id) REFERENCES products(id);
+
+
 
 
 
