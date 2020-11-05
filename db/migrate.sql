@@ -5,7 +5,7 @@ create table users(
   id INT(6) AUTO_INCREMENT PRIMARY KEY,
   username VARCHAR(30) NOT NULL,
   password VARCHAR(30) NOT NULL,
-  role VARCHAR(30),
+  role VARCHAR(30) default 'customer',
   cookie_token VARCHAR(30)
 );
 
@@ -36,6 +36,7 @@ create table slides(
 
 ALTER TABLE products ADD FOREIGN KEY (user_id) REFERENCES users(id);
 ALTER TABLE slides ADD FOREIGN KEY (user_id) REFERENCES users(id);
+ALTER TABLE products ADD FOREIGN KEY (category_id) REFERENCES categories(id);
 
 
 
