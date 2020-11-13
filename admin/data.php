@@ -36,7 +36,7 @@
           $data .= '<td>'.$row["id"].'</td>';
           $data .= '<td>'.$row["name"].'</td>';
           $data .= '<td><img src=../'.$row['img_link'].' height=50px></td>';
-          $data .= '<td>'.$row["name"].'</td>';
+          $data .= '<td>'.$row["username"].'</td>';
           $data .= '<td>'.$row["price"].'/'.$row["unit_type"].'</td>';
           $data .= '<td><img src=../shared/images/edit.png height=40px><img src=../shared/images/delete.png height=20px></td>';
           $data .= '</tr>';
