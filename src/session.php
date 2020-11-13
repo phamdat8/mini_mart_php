@@ -35,6 +35,14 @@ class session{
     setcookie("token", '');
   }
 
+  function signup($username, $password){
+    $sql = "insert into users(username, password) values('".$username."','".$password."')";
+    $rel = mysqli_query($GLOBALS['con'], $sql);
+    if ($rel) {
+      return 1;
+    }
+  }
+
   function check_cookie(){
     $id = $_COOKIE['id'];
     $token = $_COOKIE['token'];
@@ -49,6 +57,28 @@ class session{
           return 1;
         }
       }
+    }
+  }
+
+  function is_admin($id){
+    $sql = "select * from users where id ='".$id."'";
+    $rel = mysqli_query($GLOBALS['con'], $sql);
+    $row = $rel->fetch_array();
+    if($row['role'] == 'admin' || $row['role'] == 'manager'){
+      return 1;
+    }else{
+      return 0;
+    }
+  }
+
+  function is_manager($id){
+    $sql = "select * from users where id ='".$id."'";
+    $rel = mysqli_query($GLOBALS['con'], $sql);
+    $row = $rel->fetch_array();
+    if($row['role'] == 'manager'){
+      return 1;
+    }else{
+      return 0;
     }
   }
 

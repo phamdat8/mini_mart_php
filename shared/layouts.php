@@ -29,10 +29,10 @@
         <li class="nav-item">'.$_SESSION["username"].'</li>';
       }else{
         $data .= '<li class="nav-item">
-          <button class="btn btn-outline-primary my-2 my-sm-0 btn-right"><a href="login.php">Đăng nhập</a></button>
+          <a href="login.php"><button class="btn btn-outline-primary my-2 my-sm-0 btn-right">Đăng nhập</button></a>
         </li>
         <li class="nav-item">
-          <button class="btn btn-outline-primary my-2 my-sm-0">Đăng Ký</button>
+          <a href="signup.php"><button class="btn btn-outline-primary my-2 my-sm-0">Đăng Ký</button></a>
         </li>';
       }
       $data .='</ul></div></nav>';
