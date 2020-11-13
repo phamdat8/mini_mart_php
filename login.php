@@ -11,6 +11,7 @@
     switch ($_POST["commit"]) {
       case 'Đăng ký':
         header('location: signup.php');
+        exit();
       case 'Đăng nhập':
         $login = $s -> login($username, $pass, $remember_me);
         if($login == 1){
@@ -24,7 +25,6 @@
         break;
     }
   }
-  echo $_COOKIE['token'];
 ?>
 <html>
   <head>
