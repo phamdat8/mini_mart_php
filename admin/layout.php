@@ -61,7 +61,7 @@ class layout{
         <ul class="form-inline my-2 my-lg-0">';
     if (isset($_SESSION['user_id'])){
       $data .= '<li class="nav-item">
-        <button class="btn btn-outline-primary my-2 my-sm-0 btn-right"><a href="logout.php">Đăng xuất</a></button>
+        <button class="btn btn-outline-primary my-2 my-sm-0 btn-right"><a href="../logout.php">Đăng xuất</a></button>
       </li>
       <li class="nav-item">'.$_SESSION["username"].'</li>';
     }else{

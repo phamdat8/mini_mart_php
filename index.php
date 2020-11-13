@@ -17,7 +17,7 @@ if(!isset($_SESSION)) {
     include('src/session.php');
     $l = new layouts();
     $s = new session();
-    $status = $s -> check_cookie();
+    $s -> check_cookie();
     $l -> header();
     ?>
   </body>

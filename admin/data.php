@@ -59,5 +59,23 @@
       }
       return $data;
     }
+
+    function check_admin(){
+      include('../src/session.php');
+      $s = new session();
+      $rel = $s -> is_admin();
+      if($rel == 0){
+        header('location: ../index.php');
+      }
+    }
+
+    function check_manager(){
+      include('../src/session.php');
+      $s = new session();
+      $rel = $s -> is_manager();
+      if($rel == 0){
+        header('location: product.php');
+      }
+    }
   }
 ?>

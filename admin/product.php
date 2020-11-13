@@ -6,6 +6,7 @@
   include('data.php');
   $d = new data();
   $l = new layout();
+  $d -> check_admin();
 ?>
 <html lang="en"><head>
     <meta charset="utf-8">

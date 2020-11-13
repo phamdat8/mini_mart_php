@@ -1,6 +1,6 @@
 <?php
 session_start();
-include('connect.php');
+include_once('connect.php');
 $p = new connect();
 $GLOBALS['con'] = $p -> conn();
 
@@ -58,9 +58,11 @@ class session{
         }
       }
     }
+    return 0;
   }
 
-  function is_admin($id){
+  function is_admin(){
+    $id = $_SESSION['user_id'];
     $sql = "select * from users where id ='".$id."'";
     $rel = mysqli_query($GLOBALS['con'], $sql);
     $row = $rel->fetch_array();
@@ -71,7 +73,8 @@ class session{
     }
   }
 
-  function is_manager($id){
+  function is_manager(){
+    $id = $_SESSION['user_id'];
     $sql = "select * from users where id ='".$id."'";
     $rel = mysqli_query($GLOBALS['con'], $sql);
     $row = $rel->fetch_array();
