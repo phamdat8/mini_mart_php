@@ -22,7 +22,6 @@
     <link href="../assets/css/bootstrap.min.css" rel="stylesheet">
     <link href="../assets/css/style2.css" rel="stylesheet">
     <link href="../assets/css/style1.css" rel="stylesheet">
-    <!-- Custom styles for this template -->
     <link href="dashboard.css" rel="stylesheet">
   <style type="text/css">/* Chart.js */
 @-webkit-keyframes chartjs-render-animation{from{opacity:0.99}to{opacity:1}}@keyframes chartjs-render-animation{from{opacity:0.99}to{opacity:1}}.chartjs-render-monitor{-webkit-animation:chartjs-render-animation 0.001s;animation:chartjs-render-animation 0.001s;}</style></head>
@@ -33,7 +32,7 @@
     <div class="container-fluid" style="margin-top: 0px">
       <div class="row">
         <?php $l->left();?>
-        <title-name>Quản lý slider</title-name>
+        <title-name>Quản lý sản phẩm</title-name>
         <a>
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-plus-circle" style="margin-top:-13px;"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="16"></line><line x1="8" y1="12" x2="16" y2="12"></line></svg>
         </a>
@@ -44,13 +43,14 @@
                   <th>#</th>
                   <th>Tên</th>
                   <th>Ảnh</th>
-                  <th>Active</th>
+                  <th>Người đăng</th>
+                  <th>Giá bán</th>
                   <th>Thao tác</th>
                 </tr>
               </thead>
               <tbody>
                 <?php
-                  echo $d -> slides();
+                  echo $d -> products();
                 ?>
               </tbody>
             </table>
