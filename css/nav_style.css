@@ -1,0 +1,121 @@
+/* CSS Document */
+.conteiner
+{
+	margin: 0px auto;
+	padding: 1px;
+	height: 1500px;
+	width: 1000px;
+	
+}
+#header
+{
+	height: 150px;
+	width: 1000px;
+	margin-left: 15px;
+	background-color:#18C471;
+}
+#menu
+{
+	height: 70px;
+	width: 1000px;
+	margin-left: 15px;
+	background-color:#EA0EF0;
+	margin-top: 2px;
+	margin-bottom: 2px;
+}
+#banner
+{
+	height: 250px;
+	width: 1000px;
+	margin-left: 15px;
+	background-color: #2A0FD4;
+	margin-bottom: 2px;
+}
+#main
+{
+	height: 845px;
+	width: 1000px;
+	margin-left: 15px;
+    margin-bottom: 2px;
+    border: solid 1px;
+}
+#main_left
+{
+	float: left;
+	height: 845px;
+	width: 205px;
+	margin-left: 0px;
+	border-right: solid 1px;
+}
+#main_right
+{
+	float: right;
+	height: 400px;
+	width: 795px;
+	margin-left: -5px;
+	margin-top: -19px;
+	
+}
+#products
+{
+	float: left;
+	margin-top:18px;
+	height: 325px;
+	width: 200px;
+	
+	margin-right: 10px;
+	margin-left: 10px;
+	margin-bottom: 20px;
+	border: solid 1px #000000;
+}
+#products_name
+{
+	float: left;
+	height: 60px;
+	width: 200px;
+	background-color: aqua;
+	margin-top: 0px;
+	margin-left: 0px;
+	margin-bottom: 2px;
+	text-align: center;
+}
+#products_name p
+{
+	float: left;
+	margin-top: 10px;
+}
+ #products_images
+{
+	float: left;
+	height: 225px;
+	width: 200px;
+	
+	margin-top: -20px;
+	margin-left: 0px;
+	
+}
+img
+{
+	float: left;
+	margin-bottom: 2px;
+	margin-left: 0px;
+}
+ #products_price
+{
+	float: left;
+	height: 40px;
+	width: 200px;
+	background-color: aqua;
+	color: red;
+	margin-top: 0px;
+	margin-left: 0px;
+	text-align: center;
+}
+
+#footer
+{
+	height: 150px;
+	width: 1000px;
+	margin-left: 15px;
+	background-color:#E40C5D;
+}

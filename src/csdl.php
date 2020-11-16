@@ -1,10 +1,9 @@
-<?php 
-
-class connect
+<?php
+class csdl
 {
-	function conn()
+	function connect()
 	{
-		$con = new Mysqli("127.0.0.1","develop","123","mini_mart");
+		$con = new Mysqli("localhost","root","","congtyabc");
 		if(!$con)
 		{
 			echo"không kết nối được";
@@ -12,13 +11,15 @@ class connect
 		}
 		else
 		{
+			
+			
 			return $con;
 		}
 	}
 
 	function xuatsanpham($sql)
 	{
-		$link = $this->conn();
+		$link = $this->connect();
 		$ketqua = Mysqli_query($link,$sql);
 		$i = Mysqli_num_rows($ketqua);
 		if($i>0)
@@ -26,14 +27,14 @@ class connect
 			while($row = Mysqli_fetch_array($ketqua))
 			{
 				$id = $row['id'];
-				$tensp = $row['name'];
-				$gia = $row['price'];
-				$hinh = $row['img'];
+				$tensp = $row['tensp'];
+				$gia = $row['gia'];
+				$hinh = $row['hinh'];
 			
 				echo'<div  id="products">
 					<div id="products_name">'.$tensp.'</div>
-					<div id="products_images"><img src="../images/'.$hinh.'" style="height: 225px; width: 200px;">images</div>
-					<div id="products_price">'.'Giá: '.$gia.'</div>
+					<div id="products_images"><img src="../images/seed/'.$hinh.'" style="height: 225px; width: 200px;">images</div>
+					<div id="products_price">'.$gia.'</div>
 					
 				</div>';
 					
@@ -46,4 +47,5 @@ class connect
 		}
 	}
 }
+	
 ?>
