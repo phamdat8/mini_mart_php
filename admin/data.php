@@ -61,13 +61,10 @@
       return $data;
     }
 
-    function product_edit_form($id){
+    function product_form($id){
       $data = '';
       $sql = 'select * from products where id='.$id;
       $rel = mysqli_query($GLOBALS['con'], $sql);
-      if(!$rel){
-        return 'Khong co san pham';
-      }
       $row = $rel->fetch_array();
       $data .= '<form>
                   <div class="form-group">
@@ -100,17 +97,16 @@
                       </select>
                     </div>
                   </div>
+                  <button type="submit" class="btn btn-primary" name="submit" value="update_slide">Lưu thay đổi</button>
+                  <button type="submit" class="btn btn-danger" name="submit" value="cancel">Huỷ thao tác</button>
                 </form>';
       return $data;
     }
 
-    function slide_edit_form($id){
+    function slide_form($id){
       $data = '';
       $sql = 'select * from slides where id='.$id;
       $rel = mysqli_query($GLOBALS['con'], $sql);
-      if(!$rel){
-        return 'Không có ảnh nền';
-      }
       $row = $rel->fetch_array();
       $data .= '<form action="src/action.php" method="POST" enctype="multipart/form-data">
                   <input type="hidden" name="item_table" value="slide">

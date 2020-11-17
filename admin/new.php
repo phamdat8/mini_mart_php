@@ -40,12 +40,12 @@
         <?php $l->left();
             switch ($_GET['type']) {
               case 'slide':
-                echo '<title-name style="font-size: 40px">Chỉnh sửa ảnh nền</title-name>';
-                echo $d -> slide_form($_GET['id']);
+                echo '<title-name style="font-size: 40px">Thêm ảnh nền</title-name>';
+                echo $d -> slide_form(0);
                 break;
               case 'product':
-                echo '<title-name style="font-size: 40px">Chỉnh sửa sản phẩm</title-name>';
-                echo $d -> product_form($_GET['id']);
+                echo '<title-name style="font-size: 40px">Thêm sản phẩm</title-name>';
+                echo $d -> product_form(0);
                 break;
             }
           ?>
