@@ -13,6 +13,7 @@ class session{
       if($row['password'] == $pass){
         $_SESSION['username'] = $row["username"];
         $_SESSION['user_id'] = $row["id"];
+        $_SESSION['cart_quantity'] = $row["cart_quantity"];
         if($remember_me == 1){
           $random = $this -> rand_string();
           $sql = "update users set cookie_token='".$random."' where id=".$row["id"];
@@ -54,6 +55,7 @@ class session{
         if($row['cookie_token'] == $token){
           $_SESSION['username'] = $row["username"];
           $_SESSION['user_id'] = $row["id"];
+          $_SESSION['cart_quantity'] = $row["cart_quantity"];
           return 1;
         }
       }

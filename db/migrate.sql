@@ -50,13 +50,20 @@ create table orders_details(
   amount int(6)
 );
 
+create table carts(
+  id INT(6) AUTO_INCREMENT PRIMARY KEY,
+  user_id int(6),
+  product_id int(6),
+  quantity int(6)
+)
 
+alter table users add cart_quantity int(6);
 
 ALTER TABLE orders ADD FOREIGN KEY (user_id) REFERENCES users(id);
 ALTER TABLE orders_details ADD FOREIGN KEY (order_id) REFERENCES orders(id);
 ALTER TABLE orders_details ADD FOREIGN KEY (product_id) REFERENCES products(id);
-
-
+ALTER TABLE carts ADD FOREIGN KEY (user_id) REFERENCES users(id);
+ALTER TABLE carts ADD FOREIGN KEY (product_id) REFERENCES products(id);
 
 
 

@@ -18,11 +18,11 @@
                 <input class="form-control mr-sm-2 input-custom" type="search" placeholder="Search" aria-label="Search">
                 <button class="btn" type="submit"><img src="./shared/images/search.png" class="search-icon" height="25px"></button>
               </form>
-            </li>
-            <li class="nav-item btn-right">
-              <img src="./shared/images/cart.jpg" class="search-icon" height="33px" style="padding-right:0px">(2)
             </li>';
       if (isset($_SESSION['user_id'])){
+        $data .= '<li class="nav-item btn-right">
+                    <img src="./shared/images/cart.jpg" class="search-icon" height="33px" style="padding-right:0px">('.$_SESSION["cart_quantity"].')
+                  </li>';
         $data .= '<li class="nav-item">
           <button class="btn btn-outline-primary my-2 my-sm-0 btn-right"><a href="logout.php">Đăng xuất</a></button>
         </li>

@@ -1,4 +1,3 @@
-//edit this file to correct with your system. Don't worry, git will be ignore it
 <?php
 class connect{
   function conn(){
