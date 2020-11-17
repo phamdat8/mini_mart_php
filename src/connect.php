@@ -1,9 +1,9 @@
-//edit this file to correct with your system. Don't worry, git will be ignore it
+
 <?php
 class connect{
   function conn(){
-    $servername = "127.0.0.1";
-    $username = "develop";
+    $servername = "localhost";
+    $username = "root";
     $password = "";
     // Create connection
     $conn = new mysqli($servername, $username, $password);
