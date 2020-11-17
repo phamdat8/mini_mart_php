@@ -16,6 +16,8 @@ class product{
     $rel = mysqli_query($GLOBALS['con'], $sql);
     $row = $rel->fetch_array();
     $category_name = $row['name'];
+     //echo $category_name; // xuất tên của category vd: trái cây, rau củ
+     echo'<br>';
     $sql = 'select * from products where category_id='.$category_id;
     $rel = mysqli_query($GLOBALS['con'], $sql);
     while($row = $rel->fetch_assoc()){
