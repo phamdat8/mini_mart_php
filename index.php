@@ -15,10 +15,13 @@ if(!isset($_SESSION)) {
     <?php
     include('shared/layouts.php');
     include('src/session.php');
+    include('src/products.php');
     $l = new layouts();
     $s = new session();
+    $p = new product();
     $s -> check_cookie();
     $l -> header();
+    $p -> show();
     ?>
   </body>
 </html>
