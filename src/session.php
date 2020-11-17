@@ -1,5 +1,7 @@
 <?php
-session_start();
+if(!isset($_SESSION)) {
+  session_start();
+}
 include_once('connect.php');
 $p = new connect();
 $GLOBALS['con'] = $p -> conn();
@@ -44,8 +46,12 @@ class session{
   }
 
   function check_cookie(){
+    if(!isset($_COOKIE['id'])){
+      return 0;
+    }
     $id = $_COOKIE['id'];
     $token = $_COOKIE['token'];
+    
     if(($id != '') && ($token != '')){
       $sql = "select * from users where id ='".$id."'";
       $rel = mysqli_query($GLOBALS['con'], $sql);
