@@ -25,11 +25,17 @@
     <link href="../assets/css/style1.css" rel="stylesheet">
     <!-- Custom styles for this template -->
     <link href="dashboard.css" rel="stylesheet">
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
   <style type="text/css">/* Chart.js */
 @-webkit-keyframes chartjs-render-animation{from{opacity:0.99}to{opacity:1}}@keyframes chartjs-render-animation{from{opacity:0.99}to{opacity:1}}.chartjs-render-monitor{-webkit-animation:chartjs-render-animation 0.001s;animation:chartjs-render-animation 0.001s;}</style></head>
 
   <body>
-
+    <?php
+    if(isset($_SESSION['notification'])){
+      echo '<script>swal("'.$_SESSION['notification'].'");</script>';
+      unset($_SESSION['notification']);
+    }
+    ?>
     <?php $l->top();?>
     <div class="container-fluid" style="margin-top: 0px">
       <div class="row">
@@ -51,7 +57,7 @@
               </thead>
               <tbody>
                 <?php
-                  echo $d -> slides();
+                  echo $d -> slides_list();
                 ?>
               </tbody>
             </table>
