@@ -8,6 +8,7 @@ if(!isset($_SESSION)) {
     <title>Mini mart</title>
     <link rel="stylesheet" media="all" href="./assets/css/bootstrap.min.css">
     <link rel="stylesheet" media="all" href="./assets/css/style1.css">
+    <link rel="stylesheet" media="all" href="./assets/css/style2.css">
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
   </head>

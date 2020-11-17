@@ -1,8 +1,8 @@
 <?php
 class connect{
   function conn(){
-    $servername = "localhost";
-    $username = "root";
+    $servername = "127.0.0.1";
+    $username = "develop";
     $password = "";
     // Create connection
     $conn = new mysqli($servername, $username, $password);
