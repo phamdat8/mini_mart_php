@@ -1,5 +1,7 @@
 <?php
-session_start();
+if(!isset($_SESSION)) {
+  session_start();
+}
 include_once('connect.php');
 $p = new connect();
 $GLOBALS['con'] = $p -> conn();
@@ -63,6 +65,7 @@ class session{
   //   }
   //   return 0;
   // }
+
 
   function is_admin(){
     $id = $_SESSION['user_id'];
