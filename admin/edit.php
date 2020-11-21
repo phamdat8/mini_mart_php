@@ -35,7 +35,7 @@
     }
     ?>
     <?php $l->top();?>
-    <div class="container-fluid" style="margin-top: 0px">
+    <div class="container-fluid" style="margin-top: 90px">
       <div class="row">
         <?php $l->left();
             switch ($_GET['type']) {
@@ -47,6 +47,10 @@
                 echo '<title-name style="font-size: 40px">Chỉnh sửa sản phẩm</title-name>';
                 echo $d -> product_form($_GET['id']);
                 break;
+                case 'user':
+                  echo '<title-name style="font-size: 40px">Chỉnh sửa người dùng</title-name>';
+                  echo $d -> user_form($_GET['id']);
+                  break;
             }
           ?>
       </div>

@@ -18,7 +18,7 @@
           header('location: index.php');
         }
         else{
-          header('location: login.php');
+          echo 'ahsbdhasbdjsbjhabs';
         }
       default:
 

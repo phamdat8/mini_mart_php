@@ -4,16 +4,20 @@ class layout{
     echo '<nav class="col-md-2 d-none d-md-block bg-light sidebar">
       <div class="sidebar-sticky">
         <ul class="nav flex-column">
-          <li class="nav-item">
-            <a class="nav-link active" href="#">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-home"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
-              Dashboard <span class="sr-only">(current)</span>
-            </a>
-          </li>
+        <li class="nav-item">
+          <a class="nav-link" href="order.php">
+            <div class="row">
+              <img src="../shared/images/order.png" width="24" height="24" class="ml-3 mr-1"/>
+              <div>Hoá đơn</div>
+            </div>
+          </a>
+        </li>
           <li class="nav-item">
             <a class="nav-link" href="slide.php">
-              <img src="../shared/images/slide_icon.svg" width="24" height="24" />
-              Ảnh nền
+              <div class="row">
+                <img src="../shared/images/slide_icon.svg" width="24" height="24" class="ml-3 mr-1"/>
+                <div>Ảnh nền</div>
+              </div>
             </a>
           </li>
           <li class="nav-item">
@@ -50,7 +54,7 @@ class layout{
   }
 
   function top(){
-    $data = '<nav class="navbar navbar-expand-lg navbar-light">
+    $data = '<nav class="navbar navbar-expand-lg bg-primary bd-navbar fixed-top">
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -58,21 +62,13 @@ class layout{
         <a class="navbar-brand large-name" href="#">MINI MART</a>
         <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
         </ul>
-        <ul class="form-inline my-2 my-lg-0">';
-    if (isset($_SESSION['user_id'])){
+        <ul class="form-inline my-2 my-lg-0">
+          <li class="nav-item">
+          <a></li>';
       $data .= '<li class="nav-item">
-        <button class="btn btn-outline-primary my-2 my-sm-0 btn-right"><a href="../logout.php">Đăng xuất</a></button>
+        <button class="btn btn-light my-2 my-sm-0 btn-right"><a href="../logout.php">Đăng xuất</a></button>
       </li>
-      <li class="nav-item">'.$_SESSION["username"].'</li>';
-    }else{
-      $data .= '<li class="nav-item">
-        <a href="login.php"><button class="btn btn-outline-primary my-2 my-sm-0 btn-right">Đăng nhập</button></a>
-      </li>
-      <li class="nav-item">
-        <a href="signup.php"><button class="btn btn-outline-primary my-2 my-sm-0">Đăng Ký</button></a>
-      </li>';
-    }
-    $data .='</ul></div></nav>';
+      <li class="nav-item">'.$_SESSION["username"].'</li></ul></div></nav>';
     echo $data;
   }
 }

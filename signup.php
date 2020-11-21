@@ -5,6 +5,10 @@
 
   include('src/session.php');
   $s = new session();
+
+
+
+
   switch ($_POST['commit']) {
     case 'Đăng ký':
       $username = $_POST['username'];
@@ -14,9 +18,15 @@
         $rel = $s -> signup($username, $pass);
         if($rel == 1){
           $s -> login($username, $pass, '');
-          header("location: index.php");
-          exit();
+          $_SESSION["notification"] = "Tạo tài khoản không thành công";
+          echo '<script>window.location = "index.php"</script>';
+          // header("location: index.php");
+        }else{
+          $_SESSION["notification"] = "Tạo tài khoản không thành công";
         }
+      }else{
+        $_SESSION["notification"] = "Xác nhận mật khẩu không trùng khớp";
+        header("location: signup.php");
       }
       break;
 
@@ -29,9 +39,17 @@
   <head>
     <title>Đăng ký</title>
     <link rel="stylesheet" media="all" href="../assets/css/bootstrap.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/10.10.1/sweetalert2.min.js"></script>
+    <link rel="stylesheet" media="all" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/10.10.1/sweetalert2.min.css">
   </head>
 
   <body>
+    <?php
+    if(isset($_SESSION['notification'])){
+      echo '<script>swal.fire("Oh no","'.$_SESSION['notification'].'", "error");</script>';
+      unset($_SESSION['notification']);
+    }
+    ?>
     <div class="container-fluid h-100 text-dark login-form">
       <div class="row justify-content-center align-items-center">
         <h2>Đăng ký tài khoản</h2>

@@ -23,6 +23,7 @@
     <link href="../assets/css/bootstrap.min.css" rel="stylesheet">
     <link href="../assets/css/style2.css" rel="stylesheet">
     <link href="../assets/css/style1.css" rel="stylesheet">
+    <link href="dashboard.css" rel="stylesheet">
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
   <style type="text/css">/* Chart.js */
 @-webkit-keyframes chartjs-render-animation{from{opacity:0.99}to{opacity:1}}@keyframes chartjs-render-animation{from{opacity:0.99}to{opacity:1}}.chartjs-render-monitor{-webkit-animation:chartjs-render-animation 0.001s;animation:chartjs-render-animation 0.001s;}</style></head>
@@ -35,41 +36,52 @@
     }
     ?>
     <?php $l->top();?>
-    <div class="container-fluid" style="margin-top: 90px">
-      <div class="row mt-5">
-        <?php $l->left();
-            switch ($_GET['type']) {
-              case 'slide':
-                echo '<title-name style="font-size: 40px">Thêm ảnh nền</title-name>';
-                echo $d -> slide_form(0);
-                break;
-              case 'product':
-                echo '<title-name style="font-size: 40px">Thêm sản phẩm</title-name>';
-                echo $d -> product_form(0);
-                break;
-              case 'user':
-                echo '<title-name style="font-size: 40px">Thêm người dùng</title-name>';
-                echo $d -> user_form(0);
-                break;
-            }
-          ?>
+    <div class="container-fluid" style="padding-top: 40px">
+      <div class="row">
+        <?php $l->left();?>
+        <?php
+          if(isset($_GET['id'])){
+            $d -> detail($_GET['id']);
+          }else{
+            $d -> orders_list();
+          }
+
+        ?>
+        <!-- <title-name style="font-size: 40px">Quản lý hoá đơn</title-name>
+          <div class="table-responsive">
+            <table class="table table-striped table-sm">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Người mua</th>
+                  <th>Ngày mua</th>
+                  <th>Giá trị đơn hàng </th>
+                  <th>Thao tác</th>
+                </tr>
+              </thead>
+              <tbody>
+              </tbody>
+            </table>
+          </div>
+        </main>
       </div>
-    </div>
+    </div> -->
 
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
+    <script src="../../assets/js/vendor/popper.min.js"></script>
+    <script src="../../dist/js/bootstrap.min.js"></script>
 
     <!-- Icons -->
     <script src="https://unpkg.com/feather-icons/dist/feather.min.js"></script>
     <script>
       feather.replace()
-      var loadFile = function(event) {
-        var image = document.getElementById("output");
-        image.src = URL.createObjectURL(event.target.files[0]);
-      };
     </script>
-  </body>
-</html>
+
+    <!-- Graphs -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
+
+</body></html>

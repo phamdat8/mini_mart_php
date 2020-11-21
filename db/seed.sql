@@ -26,3 +26,9 @@ insert into slides(user_id, name, img_link, active)
   values(1, 'This is slide 1','db/images/seed/slide1.jpg', true),
         (1, 'This is slide 2','db/images/seed/slide2.jpg', true),
         (1, 'This is slide 3','db/images/seed/slide3.jpg', true);
+
+
+insert into carts(user_id, product_id, quantity)
+  values(1, 21, 10),
+        (1, 19, 10),
+        (1, 20, 10);
