@@ -6,7 +6,8 @@ create table users(
   username nvarchar(30) unique NOT NULL,
   password nvarchar(30) NOT NULL,
   role nvarchar(30) default 'customer',
-  cookie_token VARCHAR(30)
+  cookie_token VARCHAR(30),
+  cart_quantity int(6)
 );
 
 create table categories(
@@ -54,13 +55,11 @@ create table carts(
   user_id int(6),
   product_id int(6),
   quantity int(6)
-)
-
-alter table users add cart_quantity int(6);
+);
 
 ALTER TABLE orders ADD FOREIGN KEY (user_id) REFERENCES users(id);
-ALTER TABLE orders_details ADD FOREIGN KEY (order_id) REFERENCES orders(id);
-ALTER TABLE orders_details ADD FOREIGN KEY (product_id) REFERENCES products(id);
+ALTER TABLE order_details ADD FOREIGN KEY (order_id) REFERENCES orders(id);
+ALTER TABLE order_details ADD FOREIGN KEY (product_id) REFERENCES products(id);
 ALTER TABLE carts ADD FOREIGN KEY (user_id) REFERENCES users(id);
 ALTER TABLE carts ADD FOREIGN KEY (product_id) REFERENCES products(id);
 

@@ -9,6 +9,19 @@ insert into users(username, password, role) values ('customer3', '123456', 'cust
 insert into categories(name) values('Trái cây');
 insert into categories(name) values('Rau củ');
 
+
+
+insert into slides(user_id, name, img_link, active)
+  values(1, 'This is slide 1','db/images/seed/slide1.jpg', true),
+        (1, 'This is slide 2','db/images/seed/slide2.jpg', true),
+        (1, 'This is slide 3','db/images/seed/slide3.jpg', true);
+
+
+insert into carts(user_id, product_id, quantity)
+  values(1, 21, 10),
+        (1, 19, 10),
+        (1, 20, 10);
+
 insert into products(user_id, category_id, name, description, img_link, quantity, unit_type, price)
   values(1, 1, 'Táo', 'Vẫn còn trên cây','db/images/seed/product1.png', 10, 'Kg', 100000),
         (1, 1, 'Dưa hấu', 'Vẫn còn trên cây dưa','db/images/seed/product2.jpg', 20, 'Quả', 80000),
@@ -21,14 +34,3 @@ insert into products(user_id, category_id, name, description, img_link, quantity
         (1, 2, 'Hành Tây', 'Khiến bạn khóc thét','db/images/seed/product8.jpg', 20, 'Củ', 2000),
         (1, 2, 'Hành lá', 'aaaaaaaaaaaaaaaaaaaa','db/images/seed/product9.jpg', 10, 'Kg', 30000),
         (1, 2, 'Củ dền', 'Củ dền màu đỏ','db/images/seed/product10.jpg', 100, 'Củ', 15000);
-
-insert into slides(user_id, name, img_link, active)
-  values(1, 'This is slide 1','db/images/seed/slide1.jpg', true),
-        (1, 'This is slide 2','db/images/seed/slide2.jpg', true),
-        (1, 'This is slide 3','db/images/seed/slide3.jpg', true);
-
-
-insert into carts(user_id, product_id, quantity)
-  values(1, 21, 10),
-        (1, 19, 10),
-        (1, 20, 10);
