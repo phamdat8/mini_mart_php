@@ -24,7 +24,7 @@ if(!isset($_SESSION)) {
       $s = new session();
       $c = new cart();
       $p = new product();
-      $s -> update_cart_quantity($_SESSION["user_id"]);
+      //$s -> update_cart_quantity($_SESSION["user_id"]);
       //$s -> check_cookie();
       $l -> header();
     ?>

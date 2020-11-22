@@ -20,24 +20,28 @@ if(!isset($_SESSION)) {
   </head>
   <body>
     <?php
-    include('shared/layouts.php');
-    include('src/session.php');
-    include('src/product.php');
-    $l = new layouts();
-    $s = new session();
-    $p = new product();
-    // $s -> check_cookie();
-    if(isset($_SESSION["user_id"])){
-      $s -> update_cart_quantity($_SESSION["user_id"]);
-    }
+      include('src/connect.php');
+      $c = new connect();
 
-    if(isset($_SESSION['notification'])){
-      echo '<script>swal.fire("Oh no","'.$_SESSION['notification'].'", "error");</script>';
-      unset($_SESSION['notification']);
-    }
-    $l -> header();
-    $l -> show_slide();
-    $p -> show_all();
+      $c -> conn();
+      // include('shared/layouts.php');
+      // include('src/session.php');
+      // include('src/product.php');
+      // $l = new layouts();
+      // $s = new session();
+      // $p = new product();
+      // // $s -> check_cookie();
+      // if(isset($_SESSION["user_id"])){
+      //   $s -> update_cart_quantity($_SESSION["user_id"]);
+      // }
+      //
+      // if(isset($_SESSION['notification'])){
+      //   echo '<script>swal.fire("Oh no","'.$_SESSION['notification'].'", "error");</script>';
+      //   unset($_SESSION['notification']);
+      // }
+      // $l -> header();
+      // $l -> show_slide();
+      // $p -> show_all();
     ?>
 
   </body>
