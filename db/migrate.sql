@@ -64,4 +64,18 @@ ALTER TABLE carts ADD FOREIGN KEY (user_id) REFERENCES users(id);
 ALTER TABLE carts ADD FOREIGN KEY (product_id) REFERENCES products(id);
 
 
+alter table users add column deleted boolean default false;
+
+alter table categories add column deleted boolean default false;
+
+alter table products add column deleted boolean default false;
+
+alter table slides add column deleted boolean default false;
+
+alter table orders add column deleted boolean default false;
+
+alter table order_details add column deleted boolean default false;
+
+alter table carts add column deleted boolean default false;
+
 

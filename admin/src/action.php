@@ -9,14 +9,29 @@
       case 'delete':
         $item_id = $_POST['item_id'];
         $item_table = $_POST['item_table'];
-        $sql = 'delete from '.$item_table.'s where id='.$item_id;
-        $rel = mysqli_query($GLOBALS['con'], $sql);
-        if($rel){
-          $_SESSION['notification'] = 'Xoá thành công !';
-        }else{
-          $_SESSION['notification'] = 'Xoá thất bại !';
+        switch($item_table){
+          case 'category':
+            $sql = 'update categories set deleted = true where id='.$item_id;
+            $rel = mysqli_query($GLOBALS['con'], $sql);
+            if($rel){
+              $_SESSION['notification'] = 'Xoá thành công !';
+            }else{
+              $_SESSION['notification'] = 'Xoá thất bại !';
+            }
+            header("location: ../category.php");
+            break;
+          default:
+            $sql = 'update '.$item_table.'s set deleted = true where id='.$item_id;
+            $rel = mysqli_query($GLOBALS['con'], $sql);
+            if($rel){
+              $_SESSION['notification'] = 'Xoá thành công !';
+            }else{
+              $_SESSION['notification'] = 'Xoá thất bại !';
+            }
+            header("location: ../".$item_table.".php");
+            break;
         }
-        echo '<script>window.location = "../'.$item_table.'.php";</script>';
+
         break;
       case 'edit':
         $item_id = $_POST['item_id'];
@@ -30,10 +45,9 @@
       case 'update_slide':
         $item_id = $_POST['item_id'];
         $name = $_POST['slide_name'];
-        $active = ($_POST['active']==1) ? 1 : 0;
         $local = $_FILES['slide_image']['tmp_name'];
         if($item_id == 0){
-          $sql = 'insert into slides(name, active) values ("'.$name.'",'.$active.')';
+          $sql = 'insert into slides(name) values ("'.$name.'")';
           $rel = mysqli_query($GLOBALS['con'], $sql);
           $sql = 'select * from slides order by id desc limit 1';
           $rel = mysqli_query($GLOBALS['con'], $sql);
@@ -98,7 +112,7 @@
         break;
       case 'update_user':
         $item_id = $_POST['item_id'];
-        echo $username = $_POST['username'];
+        $username = $_POST['username'];
         $password = $_POST['password'];
         $role = $_POST['role'];
         if($item_id == 0){
@@ -118,9 +132,30 @@
         echo '<script>window.location = "../user.php";</script>';
         }
         break;
+        case 'update_category':
+          $item_id = $_POST['item_id'];
+          $name = $_POST['name'];
+          if($item_id == 0){
+            $sql = 'insert into categories(name) values ("'.$name.'")';
+            $rel = mysqli_query($GLOBALS['con'], $sql);
+            if($rel){
+              $_SESSION['notification'] = 'Thêm doanh mục thành công';
+              echo '<script>window.location = "../category.php";</script>';
+            }else{
+              $_SESSION['notification'] = 'Có lỗi xảy ra';
+              echo '<script>window.location = "../category.php";</script>';
+            }
+          }else{
+          $sql = 'update categories set name="'.$name.'" where id='.$item_id;
+          $rel = mysqli_query($GLOBALS['con'], $sql);
+          $_SESSION['notification'] = 'Chỉnh sửa doanh mục thành công';
+          echo '<script>window.location = "../category.php";</script>';
+          }
+        break;
       default:
       echo $_POST['submit'];
       break;
+
     }
 
 ?>

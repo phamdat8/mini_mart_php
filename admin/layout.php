@@ -33,15 +33,9 @@ class layout{
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-bar-chart-2"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>
-              Reports
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">
+            <a class="nav-link" href="category.php">
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-layers"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
-              Integrations
+              Doanh mục
             </a>
           </li>
         </ul>
@@ -59,16 +53,26 @@ class layout{
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-        <a class="navbar-brand large-name" href="#">MINI MART</a>
+        <a class="navbar-brand large-name" href="/">MINI MART</a>
         <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
         </ul>
         <ul class="form-inline my-2 my-lg-0">
-          <li class="nav-item">
-          <a></li>';
-      $data .= '<li class="nav-item">
-        <button class="btn btn-light my-2 my-sm-0 btn-right"><a href="../logout.php">Đăng xuất</a></button>
-      </li>
-      <li class="nav-item">'.$_SESSION["username"].'</li></ul></div></nav>';
+          ';
+      $data .= '
+      <li class="nav-item">
+                <div class="dropdown text-light">
+                  <div class="ml-3"><b>Hi, '.$_SESSION["username"].'</b></div>
+                  <div class="dropdown-content">
+                    <a href="/index.php">Trang chủ</a>
+                    <a href="/matkhau.php">Mật khẩu</a>';
+                    if($_SESSION["role"] == "manager" || $_SESSION["role"] == "admin"){
+                      $data .= '<a href="/admin/product.php">Trang quản lý</a>';
+                    }
+                    $data .= '<a href="/hoadon.php">Đơn hàng</a>
+                    <a href="logout.php">Đăng xuất</a>
+                  </div>
+                </div>
+              </li></ul></div></nav>';
     echo $data;
   }
 }

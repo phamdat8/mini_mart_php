@@ -51,6 +51,10 @@
                 echo '<title-name style="font-size: 40px">Thêm người dùng</title-name>';
                 echo $d -> user_form(0);
                 break;
+              case 'category':
+                echo '<title-name style="font-size: 40px">Thêm Doanh mục</title-name>';
+                echo $d -> category_form(0);
+                break;
             }
           ?>
       </div>
@@ -65,8 +69,7 @@
     <!-- Icons -->
     <script src="https://unpkg.com/feather-icons/dist/feather.min.js"></script>
     <script>
-      feather.replace()
-      var loadFile = function(event) {
+      function loadFile(event) {
         var image = document.getElementById("output");
         image.src = URL.createObjectURL(event.target.files[0]);
       };

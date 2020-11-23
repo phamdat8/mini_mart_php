@@ -43,7 +43,7 @@ switch ($_GET['submit']) {
     $quantity = $_GET['quantity'];
     $sql = 'select * from carts where user_id='.$user_id.' and product_id='.$product_id;
     $rel = mysqli_query($GLOBALS['con'], $sql);
-    echo $num = $rel->num_rows;
+    $num = $rel->num_rows;
     if($num == 1){
       $sql = 'update carts set quantity = '.$quantity.' where user_id='.$user_id.' and product_id='.$product_id;
       $rel = mysqli_query($GLOBALS['con'], $sql);

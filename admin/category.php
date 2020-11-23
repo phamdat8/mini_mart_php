@@ -6,7 +6,7 @@
   include('data.php');
   $d = new data();
   $l = new layout();
-  $d -> check_manager();
+  $d -> check_admin();
 ?>
 <html lang="en"><head>
     <meta charset="utf-8">
@@ -23,7 +23,6 @@
     <link href="../assets/css/bootstrap.min.css" rel="stylesheet">
     <link href="../assets/css/style2.css" rel="stylesheet">
     <link href="../assets/css/style1.css" rel="stylesheet">
-    <!-- Custom styles for this template -->
     <link href="dashboard.css" rel="stylesheet">
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
   <style type="text/css">/* Chart.js */
@@ -40,8 +39,8 @@
     <div class="container-fluid" style="padding-top: 40px">
       <div class="row">
         <?php $l->left();?>
-        <title-name style="font-size: 40px">Quản lý ảnh nền</title-name>
-        <a href="new.php?type=slide">
+        <title-name style="font-size: 40px">Quản lý doanh mục</title-name>
+        <a href="new.php?type=category">
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-plus-circle" style="margin-top:-13px;"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="16"></line><line x1="8" y1="12" x2="16" y2="12"></line></svg>
         </a>
           <div class="table-responsive">
@@ -50,13 +49,12 @@
                 <tr>
                   <th>#</th>
                   <th>Tên</th>
-                  <th class="text-center">Ảnh</th>
                   <th>Thao tác</th>
                 </tr>
               </thead>
               <tbody>
                 <?php
-                  echo $d -> slides_list();
+                  echo $d -> categories_list();
                 ?>
               </tbody>
             </table>

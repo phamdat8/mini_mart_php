@@ -7,7 +7,7 @@
     function show_all($user_id){
       echo '<div class="container bg-light mt-5 pt-5 pb-3">
               <h3 class="text-light">Các hoá đơn đã mua</h3>';
-      $sql = 'select * from orders where user_id='.$user_id;
+      $sql = 'select * from orders where deleted = false and user_id='.$user_id;
       $rel = mysqli_query($GLOBALS['con'], $sql);
       while($row = $rel->fetch_assoc()){
         $this-> show($row['id']);
@@ -60,7 +60,7 @@
                     </tr>
                   </thead>
                   <tbody>';
-      $sql = 'select *, d.quantity as d_quantity from order_details d join products p where d.product_id= p.id and order_id='.$id;
+      $sql = 'select *, d.quantity as d_quantity from order_details d join products p where deleted = false and d.product_id= p.id and order_id='.$id;
       $rel = mysqli_query($GLOBALS['con'], $sql);
       $total = 0;
       $data = '';

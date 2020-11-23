@@ -1,6 +1,6 @@
 <?php
 if(!isset($_SESSION)) {
- session_start();
+ //session_start();
 }
 include_once('connect.php');
 $p = new connect();
@@ -8,7 +8,7 @@ $GLOBALS['con'] = $p -> conn();
 
 class session{
   function login($username, $pass, $remember_me){
-    $sql = "select * from users where username ='".$username."'";
+    $sql = "select * from users where where deleted = false and username ='".$username."'";
     $rel = mysqli_query($GLOBALS['con'], $sql);
     if ($rel->num_rows == 1) {
       $row = $rel->fetch_array();
@@ -17,13 +17,6 @@ class session{
         $_SESSION['user_id'] = $row["id"];
         $_SESSION['role'] = $row["role"];
         $this->update_cart_quantity($row["id"]);
-        // if($remember_me == 1){
-        //   $random = $this -> rand_string();
-        //   $sql = "update users set cookie_token='".$random."' where id=".$row["id"];
-        //   mysqli_query($GLOBALS['con'], $sql);
-        //   setcookie("id", $row["id"], time()+3600*24*7);
-        //   setcookie("token", $random, time()+3600*24*7);
-        // }
         return 1;
       }else{
         return 0;
@@ -34,7 +27,9 @@ class session{
   }
 
   function logout(){
-    session_destroy();
+    unset($_SESSION['user_id']);
+    unset($_SESSION['username']);
+    unset($_SESSION['role']);
     setcookie("id", '');
     setcookie("token", '');
   }
@@ -46,25 +41,6 @@ class session{
       return 1;
     }
   }
-
-  // function check_cookie(){
-  //   $id = $_COOKIE['id'];
-  //   $token = $_COOKIE['token'];
-  //   if(($id != '') && ($token != '')){
-  //     $sql = "select * from users where id ='".$id."'";
-  //     $rel = mysqli_query($GLOBALS['con'], $sql);
-  //     if($rel->num_rows == 1){
-  //       $row = $rel->fetch_array();
-  //       if($row['cookie_token'] == $token){
-  //         $_SESSION['username'] = $row["username"];
-  //         $_SESSION['user_id'] = $row["id"];
-  //         $_SESSION['cart_quantity'] = $row["cart_quantity"];
-  //         return 1;
-  //       }
-  //     }
-  //   }
-  //   return 0;
-  // }
 
   function is_admin(){
     $id = $_SESSION['user_id'];

@@ -9,18 +9,13 @@
   class data{
     function slides_list(){
       $data = '';
-      $sql = 'select * from slides';
+      $sql = 'select * from slides where deleted = false';
       $rel = mysqli_query($GLOBALS['con'], $sql);
       while($row = $rel->fetch_assoc()){
           $data .= '<tr>';
           $data .= '<td>'.$row["id"].'</td>';
           $data .= '<td>'.$row["name"].'</td>';
           $data .= '<td><img src=../'.$row['img_link'].' height=50px width=70px></td>';
-          if($row["active"]==1){
-            $data .= '<td><img class="img-custom" src=../shared/images/true.png height=20px></td>';
-          }else{
-            $data .= '<td><img class="img-custom" src=../shared/images/false.png height=20px></td>';
-          }
           $data .= '<td>
                       <form action="src/action.php" method="POST" style="margin: 0px">
                         <input type="hidden" name="item_id" value="'.$row["id"].'" >
@@ -38,7 +33,7 @@
       $data = '';
       $sql = 'select p.id, p.name, p.img_link, p.price, p.unit_type, u.username, c.name as category_name
               from products p join users u join categories c
-              where p.user_id = u.id and  p.category_id = c.id
+              where p.deleted = 0 and p.user_id = u.id and  p.category_id = c.id
               group by p.id;';
       $rel = mysqli_query($GLOBALS['con'], $sql);
       while($row = $rel->fetch_assoc()){
@@ -134,10 +129,6 @@
                       <img id="output" height="200" src="../'.$img.'" />
                     </label>
                   </div>
-                  <div class="form-check">
-                    <input type="checkbox" class="form-check-input" id="active" name="active" value="1" checked>
-                    <label class="form-check-label" for="active">Kích hoạt ảnh</label>
-                  </div>
                   <button type="submit" class="btn btn-primary" name="submit" value="update_slide">Lưu thay đổi</button>
                   <button type="submit" class="btn btn-danger" name="submit" value="cancel">Huỷ thao tác</button>
                 </form>';
@@ -147,7 +138,7 @@
 
     function users_list(){
       $data = '';
-      $sql = 'select * from users';
+      $sql = 'select * from users where deleted = false';
       $rel = mysqli_query($GLOBALS['con'], $sql);
       while($row = $rel->fetch_assoc()){
           $data .= '<tr>';
@@ -282,6 +273,47 @@
       </div>';
 
     }
+
+    function categories_list(){
+      $sql = 'select * from categories where deleted = 0';
+      $rel = mysqli_query($GLOBALS['con'], $sql);
+      $data = '';
+      while($row = $rel->fetch_assoc()){
+        $data .= '<tr>';
+        $data .= '<td>'.$row["id"].'</td>';
+        $data .= '<td>'.$row["name"].'</td>';
+        $data .= '<td>
+                    <form action="src/action.php" method="POST" style="margin: 0px">
+                      <input type="hidden" name="item_id" value="'.$row["id"].'" >
+                      <input type="hidden" name="item_table" value="category" >
+                      <button type="submit" name="submit" value="edit" style="border: 0px; margin: 0px; background-color: transparent"><img src=../shared/images/edit.png height=40px></button>
+                      <button type="submit" name="submit" value="delete" style="border: 0px; margin: 0px; background-color: transparent"><img src=../shared/images/delete.png height=30px></button>
+                    </form>
+                  </td>';
+        $data .= '/<tr>';
+      }
+      echo $data;
+    }
+
+    function category_form($id){
+      $data = '';
+      $sql = 'select * from categories where id='.$id;
+      $rel = mysqli_query($GLOBALS['con'], $sql);
+      $row = $rel->fetch_array();
+      $data .= '<form action="src/action.php" method="POST" enctype="multipart/form-data">
+                  <input type="hidden" name="item_table" value="category">
+                  <input type="hidden" name="item_id" value="'.$row["id"].'">
+                  <div class="form-group">
+                    <label for="name">Tên hiển thị:</label>
+                    <input type="text" class="form-control" id="" name="name" value="'.$row["name"].'">
+                  </div>
+                  <button type="submit" class="btn btn-primary" name="submit" value="update_category">Lưu thay đổi</button>
+                  <button type="submit" class="btn btn-danger" name="submit" value="cancel">Huỷ thao tác</button>
+                </form>';
+      return $data;
+    }
+
+
     function check_admin(){
       include('../src/session.php');
       $s = new session();

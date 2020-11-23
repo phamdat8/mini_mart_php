@@ -51,6 +51,10 @@
                   echo '<title-name style="font-size: 40px">Chỉnh sửa người dùng</title-name>';
                   echo $d -> user_form($_GET['id']);
                   break;
+                case 'category':
+                  echo '<title-name style="font-size: 40px">Chỉnh sửa doanh mục</title-name>';
+                  echo $d -> category_form($_GET['id']);
+                  break;
             }
           ?>
       </div>

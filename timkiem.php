@@ -29,20 +29,10 @@ if(!isset($_SESSION)) {
       $l = new layouts();
       $s = new session();
       $p = new product();
-      $sl = new slide();
-
-      // $s -> check_cookie();
-      if(isset($_SESSION["user_id"])){
-        $s -> update_cart_quantity($_SESSION["user_id"]);
-      }
-
-      if(isset($_SESSION['notification'])){
-        echo '<script>swal.fire("Oh no","'.$_SESSION['notification'].'", "error");</script>';
-        unset($_SESSION['notification']);
-      }
       $l -> header();
-      $sl -> show_slide();
-      $p -> show_all();
+      if($_GET['submit'] == 'search'){
+        $p -> search($_GET['text']);
+      }
       $l -> footer();
     ?>
 
