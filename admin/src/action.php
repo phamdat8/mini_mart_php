@@ -20,6 +20,16 @@
             }
             header("location: ../category.php");
             break;
+          case 'user':
+            if($_SESSION['user_id'] == $item_id){
+              $_SESSION['notification'] = 'Không thể xoá bản thân.';
+            }else{
+              $sql = 'update '.$item_table.'s set deleted = true where id='.$item_id;
+              $rel = mysqli_query($GLOBALS['con'], $sql);
+              $_SESSION['notification'] = 'Xoá thành công !';
+            }
+            header("location: ../".$item_table.".php");
+            break;
           default:
             $sql = 'update '.$item_table.'s set deleted = true where id='.$item_id;
             $rel = mysqli_query($GLOBALS['con'], $sql);
@@ -86,7 +96,7 @@
         $description = $_POST['description'];
         $price = $_POST['price'];
         $unit_type = $_POST['unit_type'];
-        $category_id = ($_POST['category'] == 'Trái cây') ? 1 : 2 ;
+        $category_id = $_POST['category'];
         $local = $_FILES['image']['tmp_name'];
         if($item_id == 0){
           $sql = 'insert into products(name, description, price, user_id, category_id, unit_type) values ("'.$name.'","'.$description.'",'.$price.','.$user_id.','.$category_id.',"'.$unit_type.'")';

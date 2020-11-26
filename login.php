@@ -1,4 +1,8 @@
-
+<?php
+if(!isset($_SESSION)) {
+   session_start();
+}
+?>
 <html>
   <head>
     <title>HI</title>
@@ -10,25 +14,19 @@
   <body>
 
     <?php
-
-      if(!isset($_SESSION)) {
-          echo 'hi';
-         //session_start();
-      }
       include('src/session.php');
       $s = new session();
       $username = $_POST['username'];
       $pass = $_POST['password'];
-      $remember_me = $_POST['remember_me'];
       if(isset($_POST["commit"])){
         switch ($_POST["commit"]) {
           case 'Đăng nhập':
-            $login = $s -> login($username, $pass, $remember_me);
+            $login = $s -> login($username, $pass);
             if($login == 1){
-              header('location: index.php');
+              echo '<script>window.location = "index.php"</script>';
             }
             else{
-              echo '<script>swal("Sai tài khoản hoặc mật khẩu");</script>';
+              echo '<script>swal("Sai tài khoản hoặc mật khẩu.")</script>';
             }
           default:
 

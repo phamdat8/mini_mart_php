@@ -1,14 +1,11 @@
 <?php
-if(!isset($_SESSION)) {
- //session_start();
-}
 include_once('connect.php');
 $p = new connect();
 $GLOBALS['con'] = $p -> conn();
 
 class session{
-  function login($username, $pass, $remember_me){
-    $sql = "select * from users where where deleted = false and username ='".$username."'";
+  function login($username, $pass){
+    $sql = "select * from users where deleted = false and username ='".$username."'";
     $rel = mysqli_query($GLOBALS['con'], $sql);
     if ($rel->num_rows == 1) {
       $row = $rel->fetch_array();
@@ -16,7 +13,6 @@ class session{
         $_SESSION['username'] = $row["username"];
         $_SESSION['user_id'] = $row["id"];
         $_SESSION['role'] = $row["role"];
-        $this->update_cart_quantity($row["id"]);
         return 1;
       }else{
         return 0;
@@ -27,11 +23,7 @@ class session{
   }
 
   function logout(){
-    unset($_SESSION['user_id']);
-    unset($_SESSION['username']);
-    unset($_SESSION['role']);
-    setcookie("id", '');
-    setcookie("token", '');
+    session_destroy();
   }
 
   function signup($username, $password){
@@ -86,8 +78,8 @@ class session{
     return $randomString;
   }
 
-  function change_pass($id, $new_pass, $old_pass){
-    $sql = 'update users set password ="'.$new_pass.'" where id='.$id.' and password = "'.$old_pass.'"';
+  function change_pass($id, $new_pass){
+    $sql = 'update users set password ="'.$new_pass.'" where id='.$id;
     $rel = mysqli_query($GLOBALS['con'], $sql);
     if(mysqli_affected_rows($GLOBALS['con']) == 1){
       return 1;

@@ -88,11 +88,13 @@
                     <div class="form-group col-md-3">
                       <label for="unit_type">Đơn vị tính:</label>
                       <select id="unit_type" class="form-control" name="unit_type">
-                        <option selected>'.$row["unit_type"].'</option>
-                        <option>Kg</option>
-                        <option>Quả</option>
-                        <option>Gói</option>
-                      </select>
+                        <option selected>'.$row["unit_type"].'</option>';
+                        $sql = 'select * from categories where deleted = false';
+                        $rel = mysqli_query($GLOBALS['con'], $sql);
+                        while($row = $rel->fetch_assoc()){
+                          $data .= '<option value='.$row["id"].'>'.$row["name"].'</option>';
+                        }
+                      $data .= '</select>
                     </div>
                     <div class="form-group col-md-3">
                       <label for="category">Doanh mục:</label>

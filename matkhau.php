@@ -1,48 +1,39 @@
-<?php
-  include('src/session.php');
-  $s = new session();
-
-?>
 <html>
   <head>
     <title>Đổi mật khẩu</title>
     <link rel="stylesheet" media="all" href="../assets/css/bootstrap.min.css">
+    <link rel="stylesheet" media="all" href="./assets/css/style1.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/10.10.1/sweetalert2.min.js"></script>
     <link rel="stylesheet" media="all" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/10.10.1/sweetalert2.min.css">
   </head>
 
   <body>
+    <?php
+      include('src/session.php');
+      include("shared/layouts.php");
+      $s = new session();
+      $l = new layouts();
+      if($_POST['commit'] == 'Đổi mật khẩu') {
+         $old_password = $_POST['old_password'];
+         $pass = $_POST['password'];
+         $pass_confirm = $_POST['password_confirm'];
 
-    <div class="container-fluid h-100 text-dark login-form">
-      <?php
-        if($_POST['commit'] == 'Đổi mật khẩu') {
-
-           $old_password = $_POST['old_password'];
-           $pass = $_POST['password'];
-           $pass_confirm = $_POST['password_confirm'];
-           if($pass == $pass_confirm){
-             $rel = $s -> change_pass($_SESSION["user_id"], $pass, $old_password);
-             if($rel == 1){
-               //echo '<script>swal.fire = "OK"</script>';
-               //echo '<script>window.location = "index.php"</script>';
-               $_SESSION["notification"] = "Đổi mật khẩu thành công";
-               $_SESSION["noti_status"] = "success";
-             }else{
-               $_SESSION["notification"] = "Đổi mật khẩu không thành công";
-               $_SESSION["noti_status"] = "error";
-             }
+         if($pass == $pass_confirm){
+           $rel = $s -> change_pass($_SESSION["user_id"], $pass);
+           if($rel == 1){
+             $_SESSION['notification'] = 'Đổi mật khẩu thành công';
+             $_SESSION['noti_status'] = 'success';
+             echo '<script>window.location = "index.php"</script>';
            }else{
-             $_SESSION["notification"] = "Xác nhận mật khẩu không trùng khớp";
-             $_SESSION["noti_status"] = "error";
+             echo '<script>swal.fire("Thất bại","Sai mật khẩu cũ","error")</script>';
            }
+         }else{
+           echo '<script>swal.fire("Thất bại","Xác nhận mật khẩu không đúng","error")</script>';
          }
-
-        if(isset($_SESSION['notification'])){
-          echo '<script>swal.fire("'.$_SESSION["noti_status"].'","'.$_SESSION['notification'].'", "'.$_SESSION["noti_status"].'");</script>';
-          unset($_SESSION['notification']);
-        }
-
-      ?>
+       }
+      $l -> header();
+    ?>
+    <div class="container-fluid h-100 text-dark login-form pt-5">
       <div class="row justify-content-center align-items-center">
         <h2>Đổi mật khẩu</h2>
       </div>

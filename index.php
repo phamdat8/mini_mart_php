@@ -37,8 +37,9 @@ if(!isset($_SESSION)) {
       }
 
       if(isset($_SESSION['notification'])){
-        echo '<script>swal.fire("Oh no","'.$_SESSION['notification'].'", "error");</script>';
+        echo '<script>swal.fire("'.$_SESSION["noti_status"].'","'.$_SESSION["notification"].'", "'.$_SESSION["noti_status"].'");</script>';
         unset($_SESSION['notification']);
+        unset($_SESSION['noti_status']);
       }
       $l -> header();
       $sl -> show_slide();

@@ -63,13 +63,13 @@ class layout{
                 <div class="dropdown text-light">
                   <div class="ml-3"><b>Hi, '.$_SESSION["username"].'</b></div>
                   <div class="dropdown-content">
-                    <a href="/index.php">Trang chủ</a>
-                    <a href="/matkhau.php">Mật khẩu</a>';
+                    <a href="../index.php">Trang chủ</a>
+                    <a href="../matkhau.php">Mật khẩu</a>';
                     if($_SESSION["role"] == "manager" || $_SESSION["role"] == "admin"){
-                      $data .= '<a href="/admin/product.php">Trang quản lý</a>';
+                      $data .= '<a href="../admin/product.php">Trang quản lý</a>';
                     }
-                    $data .= '<a href="/hoadon.php">Đơn hàng</a>
-                    <a href="logout.php">Đăng xuất</a>
+                    $data .= '<a href="../hoadon.php">Đơn hàng</a>
+                    <a href="../logout.php">Đăng xuất</a>
                   </div>
                 </div>
               </li></ul></div></nav>';

@@ -54,7 +54,7 @@
     }
     function footer(){
       echo '<footer><div class="container bg-secondary ml-0 mr-0 p-2 col-12 text-white text-center sticky-bottom">
-        <h5>Rose is red, violet is blue, php is not dead .And linux still awesome.</h5>
+        <p>Rose is red, violet is blue, php is not dead .And linux still awesome.</p>
       </div></footer>';
 
     }
