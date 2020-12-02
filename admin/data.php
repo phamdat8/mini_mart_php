@@ -87,22 +87,26 @@
                     </div>
                     <div class="form-group col-md-3">
                       <label for="unit_type">Đơn vị tính:</label>
-                      <select id="unit_type" class="form-control" name="unit_type">
-                        <option selected>'.$row["unit_type"].'</option>';
-                        $sql = 'select * from categories where deleted = false';
-                        $rel = mysqli_query($GLOBALS['con'], $sql);
-                        while($row = $rel->fetch_assoc()){
-                          $data .= '<option value='.$row["id"].'>'.$row["name"].'</option>';
-                        }
-                      $data .= '</select>
+                      <select id="category" class="form-control" name="unit_type">
+                        <option selected>Kg</option>
+                        <option>Quả</option>
+                      </select>
                     </div>
                     <div class="form-group col-md-3">
                       <label for="category">Doanh mục:</label>
-                      <select id="category" class="form-control" name="category">
-                        <option selected>'.$row["category"].'</option>
-                        <option>Trái cây</option>
-                        <option>Rau củ</option>
-                      </select>
+                      <select id="unit_type" class="form-control" name="category">';
+                        $sql = 'select * from categories where deleted = false';
+                        $rel = mysqli_query($GLOBALS['con'], $sql);
+                        while($row2 = $rel->fetch_assoc()){
+                          if($row2["id"] == $row["category_id"]){
+                            $data .= '<option value='.$row2["id"].' selected >'.$row2["name"].'</option>';
+                          }else{
+                            $data .= '<option value='.$row2["id"].'>'.$row2["name"].'</option>';
+                          }
+
+                        }
+                      $data .= '</select>
+
                     </div>
                   </div>
                   <button type="submit" class="btn btn-primary" name="submit" value="update_product">Lưu thay đổi</button>

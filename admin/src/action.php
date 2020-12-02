@@ -117,7 +117,7 @@
             move_uploaded_file($local, '../../db/images/products/'.$item_id);
           }
           $_SESSION['notification'] = 'Chỉnh sửa sản phẩm thành công';
-          echo '<script>window.location = "../product.php";</script>';
+          //echo '<script>window.location = "../product.php";</script>';
         }
         break;
       case 'update_user':
