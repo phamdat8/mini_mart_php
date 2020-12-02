@@ -69,7 +69,7 @@
           $_SESSION['notification'] = 'Thêm ảnh nền thành công';
           echo '<script>window.location = "../slide.php";</script>';
         }else{
-          $sql = 'update slides set name="'.$name.'",active='.$active.' where id='.$item_id;
+          $sql = 'update slides set name="'.$name.'" where id='.$item_id;
           $rel = mysqli_query($GLOBALS['con'], $sql);
           if($rel){
             if($local != ''){
