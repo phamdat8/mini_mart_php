@@ -21,8 +21,6 @@
          if($pass == $pass_confirm){
            $rel = $s -> change_pass($_SESSION["user_id"], $pass);
            if($rel == 1){
-             $_SESSION['notification'] = 'Đổi mật khẩu thành công';
-             $_SESSION['noti_status'] = 'success';
              echo '<script>window.location = "index.php"</script>';
            }else{
              echo '<script>swal.fire("Thất bại","Sai mật khẩu cũ","error")</script>';

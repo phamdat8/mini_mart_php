@@ -15,7 +15,7 @@
           $data .= '<tr>';
           $data .= '<td>'.$row["id"].'</td>';
           $data .= '<td>'.$row["name"].'</td>';
-          $data .= '<td><img src=../'.$row['img_link'].' height=50px width=70px></td>';
+          $data .= '<td><img src=../'.$row['img_link'].' height=50px width=150px></td>';
           $data .= '<td>
                       <form action="src/action.php" method="POST" style="margin: 0px">
                         <input type="hidden" name="item_id" value="'.$row["id"].'" >

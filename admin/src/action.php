@@ -33,12 +33,14 @@
           default:
             $sql = 'update '.$item_table.'s set deleted = true where id='.$item_id;
             $rel = mysqli_query($GLOBALS['con'], $sql);
+            unlink('../../db/images/'.$item_table.'s/'.$item_id);
             if($rel){
               $_SESSION['notification'] = 'Xoá thành công !';
             }else{
               $_SESSION['notification'] = 'Xoá thất bại !';
             }
-            header("location: ../".$item_table.".php");
+            //header("location: ../".$item_table.".php");
+            echo '<script>window.location = "../'.$item_table.'.php";</script>';
             break;
         }
 

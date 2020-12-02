@@ -59,25 +59,66 @@
           <form class="new_user" id="new_user" accept-charset="UTF-8" method="post">
             <div class="form-group">
               <label for="username">Tài khoản</label><br>
-              <input autofocus="autofocus" autocomplete="email" class="form-control" placeholder="Enter your username" type="text" value="" name="username" id="username">
+              <input autofocus="autofocus" class="form-control" placeholder="Enter your username" type="text" value="" name="username" id="user_username" onchange="check_username()">
+              <small id="username_validate" style="color: red"></small>
             </div>
 
             <div class="form-group">
               <label for="user_password">Mật khẩu</label><br>
-              <input autocomplete="current-password" class="form-control" placeholder="Enter your password" type="password" name="password" id="user_password">
+              <input autocomplete="current-password" class="form-control" placeholder="Enter your password" type="password" name="password" id="user_password" onchange="check_password()">
+              <small id="password_validate" style="color: red"></small>
             </div>
 
             <div class="form-group">
               <label for="user_password_confirm">Xác nhận mật khẩu</label><br>
-              <input autocomplete="current-password" class="form-control" placeholder="Enter your password" type="password" name="password_confirm" id="user_password_confirm">
+              <input autocomplete="current-password" class="form-control" placeholder="Enter your password" type="password" name="password_confirm" id="user_password_confirm" onchange="check_password()">
+              <small id="password_confirm_validate" style="color: red"></small>
             </div>
 
             <div class="actions">
-              <input type="submit" name="commit" value="Đăng ký" class="btn btn-primary">
+              <input id="submit" type="submit" name="commit" value="Đăng ký" class="btn btn-primary" disabled>
             </div>
           </form>
         </div>
       </div>
     </div>
+    <script>
+      function check_username(){
+        username = document.getElementById("user_username").value;
+        if(username.length > 5){
+          document.getElementById("username_validate").innerHTML = '';
+          check_all();
+        }else{
+          document.getElementById("username_validate").innerHTML = 'Tài khoản cần có ít nhất 6 ký tự';
+        }
+      }
+
+      function check_password(){
+        passwd = document.getElementById("user_password").value;
+        passwd_confirm = document.getElementById("user_password_confirm").value;
+        if(passwd.length > 5){
+          document.getElementById("password_validate").innerHTML = '';
+          check_all();
+        }else{
+          document.getElementById("password_validate").innerHTML = 'Mật khẩu cần có ít nhất 6 ký tự';
+        }
+
+        if(passwd == passwd_confirm){
+          document.getElementById("password_confirm_validate").innerHTML = '';
+          check_all();
+        }else{
+          document.getElementById("password_confirm_validate").innerHTML = 'Mật khẩu không trùng khớp';
+        }
+      }
+
+      function check_all(){
+        user = document.getElementById("username_validate").textContent;
+        pass = document.getElementById("password_validate").textContent;
+        pass_confirm = document.getElementById("password_confirm_validate").textContent;
+        if(user == '' && pass == '' && pass_confirm == ''){
+          document.getElementById("submit").disabled = false;
+        }
+      }
+    </script>
   </body>
 </html>
