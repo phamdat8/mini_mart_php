@@ -36,11 +36,6 @@ if(!isset($_SESSION)) {
         $s -> update_cart_quantity($_SESSION["user_id"]);
       }
 
-      if(isset($_SESSION['notification'])){
-        echo '<script>swal.fire("'.$_SESSION["noti_status"].'","'.$_SESSION["notification"].'", "'.$_SESSION["noti_status"].'");</script>';
-        unset($_SESSION['notification']);
-        unset($_SESSION['noti_status']);
-      }
       $l -> header();
       $sl -> show_slide();
       $p -> show_all();

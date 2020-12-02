@@ -189,7 +189,6 @@
                     <select id="role" class="form-control" name="role">
                       <option selected>'.$row["role"].'</option>
                       <option>manager</option>
-                      <option>admin</option>
                       <option>customer</option>
                     </select>
                   </div>

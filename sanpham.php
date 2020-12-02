@@ -24,8 +24,6 @@ if(!isset($_SESSION)) {
       $s = new session();
       $c = new cart();
       $p = new product();
-      //$s -> update_cart_quantity($_SESSION["user_id"]);
-      //$s -> check_cookie();
       $l -> header();
     ?>
     <div class="container col-md-10 bg-light p-5 mt-5">
@@ -58,7 +56,6 @@ if(!isset($_SESSION)) {
       quantity = document.getElementById('quantity');
       quantity = parseInt(quantity.value);
       if(user_id == 0){
-        <?php $_SESSION['notification'] = 'Bạn cần đăng nhập trước'?>
         window.location = './login.php';
       }else{
         url = "src/carts.php?submit=add&user_id="+user_id+"&product_id="+product_id+"&quantity="+quantity;
