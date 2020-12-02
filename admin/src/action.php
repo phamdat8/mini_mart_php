@@ -111,13 +111,13 @@
           $_SESSION['notification'] = 'Thêm sản phẩm thành công';
           echo '<script>window.location = "../product.php";</script>';
         }else{
-          echo $sql = 'update products set name="'.$name.'",description="'.$description.'",price='.$price.',category_id='.$category_id.',unit_type="'.$unit_type.'"  where id='.$item_id;
+          $sql = 'update products set name="'.$name.'",description="'.$description.'",price='.$price.',category_id='.$category_id.',unit_type="'.$unit_type.'"  where id='.$item_id;
           $rel = mysqli_query($GLOBALS['con'], $sql);
           if(isset($local)){
             move_uploaded_file($local, '../../db/images/products/'.$item_id);
           }
           $_SESSION['notification'] = 'Chỉnh sửa sản phẩm thành công';
-          //echo '<script>window.location = "../product.php";</script>';
+          echo '<script>window.location = "../product.php";</script>';
         }
         break;
       case 'update_user':
