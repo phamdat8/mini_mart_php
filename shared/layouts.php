@@ -53,9 +53,27 @@
       echo $data;
     }
     function footer(){
-      echo '<footer><div class="container bg-secondary ml-0 mr-0 p-2 col-12 text-white text-center sticky-bottom">
-        <p>Rose is red, violet is blue, php is not dead .And linux still awesome.</p>
-      </div></footer>';
+      echo '<footer>
+              <div class="container bg-secondary ml-0 mr-0 p-2 col-12 text-white text-center sticky-bottom">
+                <div class="row">
+                  <div class="col-md-4">
+                    Mini mart là đơn vị cung cấp thực phẩm tiện lợi cho gia đình.
+                    <div class="row ml-2 mt-2"><img class="mr-1 ml-1" src="/shared/images/location_icon.svg" width=20px />12 Nguyễn Văn Bảo, P14, Quận Gò Vấp</div>
+                    <div class="row ml-2 mr-2"><img class="mr-1 ml-1" src="/shared/images/mail_icon.png" width=20px height=15px />leduyen2003@gmail.com</div>
+                    <div class="row ml-2 mr-2"><img class="mr-1 ml-1" src="/shared/images/phone_icon.png" width=20px />0869900510</div>
+                  </div>
+                  <div class="col-md-4">
+                  </div>
+                  <div class="col-md-4" style="text-align: left">
+                    <div>Đơn vị phát triển:</div>
+                    <div class="ml-5">Phạm Thành Đạt</div>
+                    <div class="ml-5">Đỗ Thị Thuý Quỳnh</div>
+                    <div class="ml-5">Trần Phương Nam</div>
+                    <div class="ml-5">Lê Quang Nghĩa</div>
+                  </div>
+                </div>
+              </div>
+            </footer>';
 
     }
   }
