@@ -34,7 +34,7 @@
                       <a href="/index.php">Trang chủ</a>
                       <a href="/matkhau.php">Mật khẩu</a>';
                       if($_SESSION["role"] == "manager" || $_SESSION["role"] == "admin"){
-                        $data .= '<a href="/admin/product.php">Trang quản lý</a>';
+                        $data .= '<a href="/admin/product.php">Quản lý</a>';
                       }
                       $data .= '<a href="/hoadon.php">Đơn hàng</a>
                       <a href="logout.php">Đăng xuất</a>
