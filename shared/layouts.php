@@ -67,9 +67,10 @@
                   <div class="col-md-4" style="text-align: left">
                     <div>Đơn vị phát triển:</div>
                     <div class="ml-5">Phạm Thành Đạt</div>
-                    <div class="ml-5">Đỗ Thị Thuý Quỳnh</div>
-                    <div class="ml-5">Trần Phương Nam</div>
-                    <div class="ml-5">Lê Quang Nghĩa</div>
+                    <div class="ml-5">Phạm Thuỳ Linh</div>
+                    <div class="ml-5">Nguyễn Tăng Thắng</div>
+                    <div class="ml-5">Thiều Mỹ Chinh</div>
+                    <div class="ml-5">Nguyễn Trần Lệ Duyên</div>
                   </div>
                 </div>
               </div>
